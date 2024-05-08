@@ -1,26 +1,13 @@
-import { useState, useEffect } from "react";
-import "./App.css";
+import React, { useEffect } from "react";
+import { useProductStore } from "./store/ProductStore";
 import Card from "./components/Card";
-
-interface Product {
-  id: number;
-  title: string;
-  price: number;
-  description: string;
-  image: string;
-}
+import { fetchProducts } from "./api/Api";
 
 function App() {
-  const [products, setProducts] = useState<Product[]>([]);
+  const { products, setProducts } = useProductStore();
 
   useEffect(() => {
-    fetch("https://fakestoreapi.com/products")
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("La solicitud no fue exitosa");
-        }
-        return response.json() as Promise<Product[]>;
-      })
+    fetchProducts()
       .then((data) => {
         setProducts(data);
       })
@@ -31,7 +18,7 @@ function App() {
 
   return (
     <>
-      <div>
+      <div className="bg-red-500 w-full h-full">
         {products.map((product) => (
           <Card key={product.id} product={product} />
         ))}
