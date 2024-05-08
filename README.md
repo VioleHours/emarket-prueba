@@ -20,6 +20,7 @@ Acceso a la Solución
 Puedes acceder a la solución desplegada en el siguiente enlace: https://emarket-prueba.vercel.app/
 
 El código fuente está disponible en el repositorio público de GitHub
+Lo manejé con git flow pero por obvias razones no pensé en que no podrías ver las ramas luego ni el manejo de cada una.
 
 ¡Espero que encuentres la solución satisfactoria! Si tienes alguna pregunta o comentario, no dudes en contactarme.
 
