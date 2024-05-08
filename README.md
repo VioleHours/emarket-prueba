@@ -1,4 +1,4 @@
-###Prueba Técnica para Desarrollador Frontend React
+Prueba Técnica para Desarrollador Frontend React
 ¡Bienvenido al repositorio de la prueba técnica para Desarrollador Frontend React de e-market!
 
 En este repositorio encontrarás la solución a la prueba técnica. A continuación, te proporciono información sobre la prueba, la solución desarrollada y cómo acceder a ella.
