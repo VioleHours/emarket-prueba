@@ -2,6 +2,7 @@ import React from "react";
 import { Product } from "../store/ProductStore";
 import Card from "./Card";
 import useFiltersStore from "../store/FiltersStore";
+import '../App.css';
 
 interface FilteredProductsProps {
   products: Product[];
@@ -71,7 +72,7 @@ const FilteredProducts: React.FC<FilteredProductsProps> = ({ products }) => {
 
   return (
     <div>
-      <div className="flex flex-col 2xl:flex-row 2xl:flex-wrap 2xl:gap-1 justify-center">
+      <div className="filters">
         <select
           value={selectedCategory || "all"}
           onChange={handleCategoryChange}
@@ -110,7 +111,7 @@ const FilteredProducts: React.FC<FilteredProductsProps> = ({ products }) => {
       {filteredAndSorted.length === 0 ? (
         <div className="text-red-500 text-center">No products found with that name or in that category.</div>
       ) : (
-        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4 gap-4">
+        <div className="gridOption">
           {filteredAndSorted.map((product) => (
             <Card key={product.id} product={product} />
           ))}
