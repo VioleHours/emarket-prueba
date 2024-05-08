@@ -110,9 +110,11 @@ const FilteredProducts: React.FC<FilteredProductsProps> = ({ products }) => {
       {filteredAndSorted.length === 0 ? (
         <div className="text-red-500 text-center">No se encontraron productos con ese nombre o en esa categoría.</div>
       ) : (
-        filteredAndSorted.map((product) => (
-          <Card key={product.id} product={product} />
-        ))
+        <div className="grid grid-cols-4 xl:grid-cols-3 2xl:grid-cols-3 gap-4">
+          {filteredAndSorted.map((product) => (
+            <Card key={product.id} product={product} />
+          ))}
+        </div>
       )}
     </div>
   );
