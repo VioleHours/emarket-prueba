@@ -1,12 +1,5 @@
-import React from "react";
+import { Product } from "../store/ProductStore";
 
-interface Product {
-  id: number;
-  title: string;
-  price: number;
-  description: string;
-  image: string;
-}
 
 interface CardProps {
   product: Product;
