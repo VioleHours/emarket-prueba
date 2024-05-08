@@ -3,7 +3,6 @@ import { Product } from "../store/ProductStore";
 import Card from "./Card";
 import useFiltersStore from "../store/FiltersStore";
 
-
 interface FilteredProductsProps {
   products: Product[];
 }
@@ -108,9 +107,13 @@ const FilteredProducts: React.FC<FilteredProductsProps> = ({ products }) => {
           Restablecer filtros
         </button>
       </div>
-      {filteredAndSorted.map((product) => (
-        <Card key={product.id} product={product} />
-      ))}
+      {filteredAndSorted.length === 0 ? (
+        <div className="text-red-500 text-center">No se encontraron productos con ese nombre o en esa categoría.</div>
+      ) : (
+        filteredAndSorted.map((product) => (
+          <Card key={product.id} product={product} />
+        ))
+      )}
     </div>
   );
 };
