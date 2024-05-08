@@ -1,43 +1,31 @@
-import { useState, useEffect } from "react";
+import React, { useEffect } from "react";
+import { useProductStore } from "./store/ProductStore";
 import "./App.css";
-import Card from "./components/Card";
+import { fetchProducts } from "./api/Api";
+import FilterComponent from "./components/FilteredProducts";
 
-interface Product {
-  id: number;
-  title: string;
-  price: number;
-  description: string;
-  image: string;
-}
-
-function App() {
-  const [products, setProducts] = useState<Product[]>([]);
+const App: React.FC = () => {
+  const { setProducts, sortedProducts, setSortedProducts } = useProductStore();
 
   useEffect(() => {
-    fetch("https://fakestoreapi.com/products")
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("La solicitud no fue exitosa");
-        }
-        return response.json() as Promise<Product[]>;
-      })
+    fetchProducts()
       .then((data) => {
         setProducts(data);
+        setSortedProducts(data);
       })
       .catch((error) => {
         console.error("Error al consumir la API:", error);
       });
   }, []);
 
+
   return (
     <>
-      <div>
-        {products.map((product) => (
-          <Card key={product.id} product={product} />
-        ))}
+      <div className="bg-red-200 w-full h-full p-4">
+        <FilterComponent products={sortedProducts}/>
       </div>
     </>
   );
-}
+};
 
 export default App;
