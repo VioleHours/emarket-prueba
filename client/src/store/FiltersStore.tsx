@@ -1,4 +1,4 @@
-import create from "zustand";
+import { create } from "zustand";
 
 interface FiltersStore {
   sortOrder: "asc" | "desc" | "default";
@@ -13,9 +13,10 @@ const useFiltersStore = create<FiltersStore>((set) => ({
   sortOrder: "default",
   setSortOrder: (order) => set({ sortOrder: order }),
   selectedCategory: "",
-  setSelectedCategory: (selectedCategory) => set({selectedCategory: selectedCategory}),
+  setSelectedCategory: (selectedCategory) =>
+    set({ selectedCategory: selectedCategory }),
   searchTerm: "",
-  setSearchTerm: (searchTerm) => set({searchTerm: searchTerm}),
+  setSearchTerm: (searchTerm) => set({ searchTerm: searchTerm }),
 }));
 
 export default useFiltersStore;

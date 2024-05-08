@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useProductStore } from "./store/ProductStore";
+import useProductStore from "./store/ProductStore";
 import "./App.css";
 import { fetchProducts } from "./api/Api";
 import FilterComponent from "./components/FilteredProducts";
@@ -35,7 +35,7 @@ const App: React.FC = () => {
 
   return (
     <>
-      <div className="bg-red-200 w-full h-full min-h-[100vh] p-4">
+      <div className="bg-gray-300 w-full h-full min-h-[100vh] p-4">
         {loading ? (
           <div className="flex justify-center items-center text-purple-600 font-bold gap-4">
             <div role="status">

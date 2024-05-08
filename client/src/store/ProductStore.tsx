@@ -1,4 +1,4 @@
-import create from "zustand";
+import { create } from "zustand";
 
 export interface Product {
   id: number;
@@ -18,9 +18,13 @@ interface ProductStore {
   setLoading: (loading: boolean) => void;
   error: string | null;
   setError: (error: string | null) => void;
+  showDescription: boolean;
+  setShowDescription: (showDescription: boolean) => void;
+  activeProductId: number | null;
+  setActiveProductId: (activeProductId: number | null) => void;
 }
 
-export const useProductStore = create<ProductStore>((set) => ({
+const useProductStore = create<ProductStore>((set) => ({
   products: [],
   setProducts: (products) => set({ products }),
   sortedProducts: [],
@@ -29,4 +33,10 @@ export const useProductStore = create<ProductStore>((set) => ({
   setLoading: (loading) => set({ loading }),
   error: null,
   setError: (error) => set({ error }),
+  showDescription: false,
+  setShowDescription: (showDescription) => set({showDescription}),
+  activeProductId: null,
+  setActiveProductId: (activeProductId) => set({activeProductId}),
 }));
+
+export default useProductStore;
