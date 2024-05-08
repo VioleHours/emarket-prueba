@@ -71,13 +71,13 @@ const FilteredProducts: React.FC<FilteredProductsProps> = ({ products }) => {
 
   return (
     <div>
-      <div className="flex flex-row gap-8">
+      <div className="flex flex-col 2xl:flex-row 2xl:flex-wrap 2xl:gap-1 justify-center">
         <select
           value={selectedCategory || "all"}
           onChange={handleCategoryChange}
-          className="p-2 my-2 mx-auto block w-full max-w-md border border-gray-300 rounded-md"
+          className="p-2 my-2 mx-auto md:mx-0 w-full md:w-auto max-w-60 border border-violet-300 rounded-md"
         >
-          <option value="all">Todas las categorías</option>
+          <option value="all">All categories</option>
           {categories.map((category) => (
             <option key={category} value={category}>
               {category}
@@ -87,30 +87,30 @@ const FilteredProducts: React.FC<FilteredProductsProps> = ({ products }) => {
         <select
           value={sortOrder}
           onChange={handleSortChange}
-          className="p-2 my-2 mx-auto block w-full max-w-md border border-gray-300 rounded-md"
+          className="p-2 my-2 mx-auto md:mx-0 w-full md:w-auto max-w-60 border border-violet-300 rounded-md"
         >
-          <option value="asc">Ordenar por precio ascendente</option>
-          <option value="desc">Ordenar por precio descendente</option>
-          <option value="default">Restablecer filtro</option>
+          <option value="asc">Sort by price ascending</option>
+          <option value="desc">Sort by price descending</option>
+          <option value="default">Reset filter</option>
         </select>
         <input
           type="text"
-          placeholder="Buscar productos"
+          placeholder="Search products"
           value={searchTerm}
           onChange={handleSearchChange}
-          className="p-2 my-2 mx-auto block w-full max-w-md border border-gray-300 rounded-md"
+          className="p-2 my-2 mx-auto md:mx-0 w-full md:w-auto max-w-60 border border-violet-300 rounded-md"
         />
         <button
           onClick={handleResetFilter}
-          className="p-2 my-2 mx-auto block w-full max-w-md border border-gray-300 rounded-md"
+          className="p-2 my-2 mx-auto md:mx-0 w-full md:w-auto max-w-60 border border-violet-300 rounded-md"
         >
-          Restablecer filtros
+          Reset filters
         </button>
       </div>
       {filteredAndSorted.length === 0 ? (
-        <div className="text-red-500 text-center">No se encontraron productos con ese nombre o en esa categoría.</div>
+        <div className="text-red-500 text-center">No products found with that name or in that category.</div>
       ) : (
-        <div className="grid grid-cols-4 xl:grid-cols-3 2xl:grid-cols-3 gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4 gap-4">
           {filteredAndSorted.map((product) => (
             <Card key={product.id} product={product} />
           ))}
